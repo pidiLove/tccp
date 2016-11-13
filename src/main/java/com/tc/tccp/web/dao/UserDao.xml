@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tc.tccp.web.dao.UserDao" >
+    <resultMap id="BaseResultMap" type="com.tc.tccp.core.entity.User" >
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="roleid" column="roleid"/>
+    </resultMap>
+    
+    
+    <sql id="Base_Column_List" >
+        id, username, password,roleid
+    </sql>
+
+    <select id="getUserByUsername" parameterType="String" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from t_user where username=#{username}
+    </select>
+
+    <select id="getRoleByUsername" parameterType="String" resultType="String">
+        select r.rolename from t_user u,t_role r where u.roleid=r.id and u.username=#{username}
+    </select>
+
+    <select id="getPermissionByUsername" parameterType="String" resultType="String">
+   select p.permissionname from t_user u,t_role r,t_permission p,t_role_permission up
+        where u.roleid=r.id and p.id=up.permissionid and up.roleid=r.id and u.username=#{usename}
+    </select>
+</mapper>
+
+

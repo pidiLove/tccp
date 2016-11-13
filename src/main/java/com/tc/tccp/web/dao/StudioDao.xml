@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tc.tccp.web.dao.StudioDao">
+
+
+	<resultMap id="studio" type="Studio">
+		<id column="studio_id" property="studio_id" />
+		<result column="studio_name" property="studio_name" />
+		<result column="studio_row_count" property="studio_row_count" />
+		<result column="studio_col_count" property="studio_col_count" />
+		<result column="studio_introduction" property="studio_introduction" />
+		<result column=" studio_flag" property=" studio_flag" />
+	</resultMap>
+	<insert id="addStudio" parameterType="Studio">
+		insert into studio( studio_name
+		,studio_row_count,studio_col_count,studio_introduction,studio_flag)
+		values(
+		#{studio_name},#{studio_row_count},#{studio_col_count},#{studio_introduction},#{studio_flag})
+	</insert>
+	<update id="updateStudio" parameterType="Studio">
+		update studio set studio_name=#{studio_name},
+		studio_row_count=#{studio_row_count},
+		studio_col_count=#{studio_col_count},
+		studio_introduction=#{studio_introduction},
+		studio_flag=#{studio_flag}
+		where studio_id =#{studio_id}
+	</update>
+	
+	<delete id="deleteById" parameterType="int">
+		delete from studio where studio_id =#{studio_id}
+	</delete>
+
+
+	<select id="findStudio" parameterType="java.lang.String"
+		resultType="Studio">
+		select * from studio where studio_name = #{studio_name}
+	</select>
+
+
+	<!-- 根据查询条件查询库存 -->
+	<select id="findAllStudioByPage" resultMap="studio"
+		parameterType="com.tc.tccp.core.page.PageParameter">
+		select * from studio
+		ORDER BY studio_id*1 ASC
+
+	</select>
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="<#article/tagtoname#>"/>
+
+    <title>未来影院剧院管理系统</title>
+
+    <!-- css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/nivo-lightbox.css" rel="stylesheet"/>
+    <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css"/>
+    <link href="css/owl.carousel.css" rel="stylesheet" media="screen"/>
+    <link href="css/owl.theme.css" rel="stylesheet" media="screen"/>
+    <link href="css/flexslider.css" rel="stylesheet"/>
+    <link href="css/animate.css" rel="stylesheet"/>
+    <link href="css/style1.css" rel="stylesheet">
+    <link href="color/default.css" rel="stylesheet">
+
+</head>
+<body>
+<section>
+    <div>
+        <div class="carousel-inner">
+            <div>
+                <img src="img/1.jpg">
+                <!-- Static Header -->
+                <div class="header-text hidden-xs">
+                    <div class="col-md-12 text-center">
+                        <h2>
+                            <span>未来影院票务管理系统</span>
+                        </h2>
+                        <br/>
+                        <div>
+                            <form name="myform" class="form-horizontal" role="form" action="" method="post">
+                                <div class="form-group">
+                                    <label for="emp_no" class="col-md-1 col-md-offset-4" focus>用户名</label>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control input-lg" id="emp_no" name="emp_no"
+                                               placeholder='请输入6-20位大小写字母和数字' onblur="checkEmpNo()">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label id="emp_no_tip" class="control-label" style="color:red"></label>
+                                    </div>
+                                </div>
+
+                                <div class="from-group">
+                                    <label for="password" class="col-md-1 col-md-offset-4">密码</label>
+                                    <div class="col-md-3">
+                                        <input type="password" class="form-control input-lg" id="password" name="password"
+                                               placeholder='请输入6-20位大小写字母和数字' onblur="checkPassWord()">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label id="password_no_tip" class="control-label" style="color:red"></label>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                            </form>
+                        </div>
+                        <div>
+                            <a class="btn btn-theme btn-sm btn-min-block" href="home.html"
+                               onclick="return checkAll()">登录</a><a class="btn btn-theme btn-sm btn-min-block"
+                                                                    href="#works">注册</a></div>
+                    </div>
+                </div><!-- /header-text -->
+            </div>
+        </div>
+    </div><!-- /carousel -->
+</section>
+<script type="text/javascript">
+    function checkEmpNo() {
+        var reg = /^[a-zA-Z0-9]{6,20}$/;
+        var emp_no = document.myform.emp_no;
+
+        if (!reg.test(emp_no.value)) {
+            document.getElementById("emp_no_tip").innerHTML = "请输入大小写字母和数字,长度6-20位!";
+            emp_no.focus();
+            return false;
+        }
+        else {
+            document.getElementById("emp_no_tip").innerHTML = "";
+            return true;
+        }
+    }
+
+     function checkPassWord()
+     {
+         var reg=/^[a-zA-Z0-9]{6,20}$/;
+         var password=document.myform.password;
+          if(!reg.test(password.value))
+         {
+             document.getElementById("password_no_tip").innerHTML="请输入大小写字母和数字,长度6-20位!";
+             password.focus();
+             return false;
+         }
+         else
+         {
+             document.getElementById("password_no_tip").innerHTML="";
+             return true;
+         }
+     }
+
+    function checkAll() {
+        if (!checkEmpNo() || !checkPassWord())
+            return false;
+        else
+            return true;
+    }
+</script>
+</body>
+</html>

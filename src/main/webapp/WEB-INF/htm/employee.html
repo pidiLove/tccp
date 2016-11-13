@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>未来影院管理系统</title>
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="css/zerogrid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/css3-mediaqueries.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet"/>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/employee.js"></script>
+    <link href="css/style2.css" rel="stylesheet">
+    <!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="js/html5.js"></script>
+        <script src="js/css3-mediaqueries.js"></script>
+    <![endif]-->
+    
+</head>
+<body id="add-0">
+<div>
+<header>
+    <div class="top-bar">
+        <div class="wrap-top zerogrid">
+            <div class="row">
+                <div class="col-1-2">
+                    <div class="wrap-col">
+                        <ul>
+                            <li ><p>未来影院管理系统</p></li>
+                            <li class="phone"><p>123321000</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-1-2">
+                    <div class="wrap-col f-right">
+                        <ul>
+                            <li><select>
+                                <option value="fe">中文</option>
+                                <option value="en" selected>英语</option>
+                            </select></li>
+                            <li><p>语言</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap-header zerogrid">
+        <div class="row">
+            <div id="menu">
+                <nav>
+                    <div class="wrap-nav">
+                       <ul>
+                         <li class="active"><a href="home.html">主页</a></li>
+                         <li><a href="studio.html">影厅管理</a></li>
+                         <li><a href="movie.html">影片管理</a></li>
+                         <li><a href="employee.html">员工管理</a></li>
+                         <li><a href="#">业务分析</a></li>
+                         <li><a href="#">帮助</a></li>
+                       </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+    
+
+    <div class="row">
+        <div class="col-md-4">
+            <div id="add-1">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control find-id" placeholder="请输入员工编号:例100000">
+                    </div>
+                    <button type="button" class="btn btn-info" onclick="findEmployee()">查找员工</button>
+                    <div>
+                        <br>
+                        <button type="button" class="btn btn-info btn-lg btn-block" onclick="showForm()">添加员工信息</button>
+                        <button type="button" class="btn btn-info btn-lg btn-block" onclick="deleteEmployee()">删除员工信息</button>
+                    </div>
+                    <div id="display"></div>
+                </form>
+            </div>
+        </div>
+
+        <div id="add-2">
+            <div class="col-md-4">
+                <form role="form" name="myform" action="" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">工号</label>
+                        <input type="text" class="form-control" value="100000" id="id-0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">姓名</label>
+                        <input type="text" class="form-control name" id="exampleInputEmail1" placeholder="请输入姓名"
+                               name="emp_no" onblur="checkEmpName()"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">工龄</label>
+                        <input type="text" class="form-control age" id="exampleInputPassword1" placeholder="请输入工龄"
+                               name="emp_center" onblur="checkEmpAge()"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputNumber1">电话号码</label>
+                        <input type="text" class="form-control number" id="exampleInputNumber1" placeholder="请输入电话号码"
+                               name="emp_buttom" onblur='return checkEmpTelNum();'>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputNumber1"></label>
+                        <input type="button" class="btn btn-info form-control" onclick="checkAll()" value="确认添加">
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-4">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="div-inline-right">
+                    <label id="emp_no_id" class="control-label" style="color:red"></label>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <div class="div-inline-right">
+                    <label id="emp_no_tip" class="control-label" style="color:red"></label>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <div class="div-inline-right">
+                    <label id="emp_no_center" class="control-label" style="color:red"></label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!--////////////////////////////////////Footer-->
+<footer>
+    <div class="bottom-footer">
+        <div class="wrap-bottom ">
+            <div class="copyright">
+                <p>2016.西安-未来影院管理系统</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+ -->
+ <mapper namespace="com.tc.tccp.web.dao.TicketDao">
+ 	 <update id="lockTicket" parameterType="Ticket">
+		 update ticket set ticket_status=1, ticket_locked_time=#{ticket_locked_time} where ticket_id =#{ticket_id};
+	</update>
+	 <update id="unlockTicket" parameterType="int">
+		 update ticket set ticket_status=0 where ticket_id =#{ticket_id};
+	</update>
+ </mapper>
